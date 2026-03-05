@@ -1,4 +1,6 @@
-const faktorHarga = 2.6
+// const faktorHarga = 2.6
+// const faktorHarga = 2.2
+const faktorHarga = 1.9
 
 const komisiShopee = 0.25
 const subsidiPromo = 0.15
@@ -98,7 +100,7 @@ function addItem() {
 <label>Harga Offline</label>
 <input type="number" class="offline">
 
-<label>Biaya Admin</label>
+<label>Biaya Admin Toko</label>
 <input type="number" class="admin">
 
 <label>Jumlah</label>
@@ -119,20 +121,28 @@ function hitungSimulasi() {
     let items = document.querySelectorAll(".item")
 
     let subtotalMenu = 0
+    let itemRows = ""
 
     items.forEach(item => {
 
+        let nama = item.querySelector(".nama").value
         let offline = parseFloat(item.querySelector(".offline").value)
-
         let admin = parseFloat(item.querySelector(".admin").value)
-
         let qty = parseFloat(item.querySelector(".qty").value)
 
         let target = offline + admin
-
         let hargaOnline = target * faktorHarga
 
-        subtotalMenu += hargaOnline * qty
+        let totalItem = hargaOnline * qty
+
+        subtotalMenu += totalItem
+
+        itemRows += `
+    <tr>
+    <td>${nama} x${qty}</td>
+    <td>Rp ${Math.round(totalItem).toLocaleString()}</td>
+    </tr>
+    `
 
     })
 
@@ -155,67 +165,73 @@ function hitungSimulasi() {
     document.getElementById("hasilSimulasi").innerHTML =
 
         `
-<table class="resultTable">
+    <table class="resultTable">
+    
+    <tr class="section">
+    <td colspan="2">Item yang Dibeli</td>
+    </tr>
+    
+    ${itemRows}
+    
+    <tr>
+    <td><b>Subtotal Menu</b></td>
+    <td><b>Rp ${Math.round(subtotalMenu).toLocaleString()}</b></td>
+    </tr>
+    
+    <tr>
+    <td>Harga Sebelum Diskon</td>
+    <td>Rp ${Math.round(subtotalMenu).toLocaleString()}</td>
+    </tr>
+    
+    <tr>
+    <td>Diskon Pembeli (50%)</td>
+    <td>- Rp ${Math.round(diskonPembeli).toLocaleString()}</td>
+    </tr>
+    
+    <tr class="highlight">
+    <td>Total Dibayar Pembeli</td>
+    <td>Rp ${Math.round(dibayarPembeli).toLocaleString()}</td>
+    </tr>
+    
+    <tr class="section">
+    <td colspan="2">Potongan ke Merchant</td>
+    </tr>
+    
+    <tr>
+    <td>Subsidi Promo Makanan</td>
+    <td>- Rp ${Math.round(promoMerchant).toLocaleString()}</td>
+    </tr>
+    
+    <tr>
+    <td>Subsidi Promo Ongkir</td>
+    <td>- Rp ${Math.round(ongkirMerchant).toLocaleString()}</td>
+    </tr>
+    
+    <tr>
+    <td>Komisi Shopee</td>
+    <td>- Rp ${Math.round(komisi).toLocaleString()}</td>
+    </tr>
+    
+    <tr class="highlight">
+    <td>Uang Masuk Merchant</td>
+    <td>Rp ${Math.round(uangMasuk).toLocaleString()}</td>
+    </tr>
+    
+    <tr class="section">
+    <td colspan="2">Distribusi Pendapatan</td>
+    </tr>
+    
+    <tr>
+    <td>Pendapatan Shopee</td>
+    <td>Rp ${Math.round(pendapatanShopee).toLocaleString()}</td>
+    </tr>
+    
+    <tr>
+    <td>Pendapatan Kurir</td>
+    <td>Rp ${Math.round(pendapatanKurir).toLocaleString()}</td>
+    </tr>
+    
+    </table>
+    `
 
-<tr>
-<td>Subtotal Menu</td>
-<td><b>Rp ${Math.round(subtotalMenu).toLocaleString()}</b></td>
-</tr>
-
-<tr>
-<td>Harga Sebelum Diskon</td>
-<td>Rp ${Math.round(subtotalMenu).toLocaleString()}</td>
-</tr>
-
-<tr>
-<td>Diskon Pembeli (50%)</td>
-<td>- Rp ${Math.round(diskonPembeli).toLocaleString()}</td>
-</tr>
-
-<tr class="highlight">
-<td>Total Dibayar Pembeli</td>
-<td>Rp ${Math.round(dibayarPembeli).toLocaleString()}</td>
-</tr>
-
-<tr class="section">
-<td colspan="2">Potongan ke Merchant</td>
-</tr>
-
-<tr>
-<td>Subsidi Promo Makanan</td>
-<td>- Rp ${Math.round(promoMerchant).toLocaleString()}</td>
-</tr>
-
-<tr>
-<td>Subsidi Promo Ongkir</td>
-<td>- Rp ${Math.round(ongkirMerchant).toLocaleString()}</td>
-</tr>
-
-<tr>
-<td>Komisi Shopee</td>
-<td>- Rp ${Math.round(komisi).toLocaleString()}</td>
-</tr>
-
-<tr class="highlight">
-<td>Uang Masuk Merchant</td>
-<td>Rp ${Math.round(uangMasuk).toLocaleString()}</td>
-</tr>
-
-<tr class="section">
-<td colspan="2">Distribusi Pendapatan</td>
-</tr>
-
-<tr>
-<td>Pendapatan Shopee</td>
-<td>Rp ${Math.round(pendapatanShopee).toLocaleString()}</td>
-</tr>
-
-<tr>
-<td>Pendapatan Kurir</td>
-<td>Rp ${Math.round(pendapatanKurir).toLocaleString()}</td>
-</tr>
-
-</table>
-`
-
-}
+    }
