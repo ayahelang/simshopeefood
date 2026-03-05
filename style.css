@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #ee4d2d;
+}
+
+button {
+    background: #ee4d2d;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin: 8px 0;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.page {
+    display: none;
+}
+
+.result {
+    margin-top: 15px;
+    background: #fafafa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* tabel hasil */
+
+.resultTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+.resultTable td {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.resultTable td:last-child {
+    text-align: right;
+}
+
+.section {
+    background: #f4f6f8;
+    font-weight: bold;
+}
+
+.highlight {
+    background: #fff5f2;
+    font-size: 16px;
+    font-weight: bold;   }

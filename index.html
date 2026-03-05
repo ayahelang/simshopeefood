@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator ShopeeFood</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Kalkulator ShopeeFood</h1>
+
+        <div id="menu">
+            <button onclick="showPage('hargaPage')">Tentukan Harga Jual Online</button>
+            <button onclick="showPage('simulasiPage')">Simulasi Penjualan</button>
+        </div>
+
+
+        <!-- BAGIAN 1 -->
+
+        <div id="hargaPage" class="page">
+
+            <h2>Tentukan Harga Jual Online</h2>
+
+            <label>Harga Offline</label>
+            <input type="number" id="offline">
+
+            <label>Biaya Admin</label>
+            <input type="number" id="admin">
+
+            <button onclick="hitungHarga()">Hitung Harga Online</button>
+
+            <div id="hasilHarga" class="result"></div>
+
+            <button onclick="backMenu()">Kembali</button>
+
+        </div>
+
+
+
+        <!-- BAGIAN 2 -->
+
+        <div id="simulasiPage" class="page">
+
+            <h2>Simulasi Penjualan</h2>
+
+            <div id="items"></div>
+
+            <button onclick="addItem()">Tambah Item</button>
+
+            <button onclick="hitungSimulasi()">Hitung Simulasi</button>
+
+            <div id="hasilSimulasi" class="result"></div>
+
+            <button onclick="backMenu()">Kembali</button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
